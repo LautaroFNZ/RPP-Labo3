@@ -1,0 +1,421 @@
+{
+	"info": {
+		"_postman_id": "46e4f205-a26f-49e7-82c6-ab54c3b6e188",
+		"name": "RPP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23206534"
+	},
+	"item": [
+		{
+			"name": "Hamburguesa",
+			"item": [
+				{
+					"name": "HamburguesaCarga",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request",
+									"value": "HamburguesaCarga",
+									"type": "default"
+								},
+								{
+									"key": "nombre",
+									"value": "lomito con queso 5",
+									"type": "default"
+								},
+								{
+									"key": "precio",
+									"value": "1900",
+									"type": "default"
+								},
+								{
+									"key": "tipo",
+									"value": "simple",
+									"type": "default"
+								},
+								{
+									"key": "aderezo",
+									"value": "mayonesa",
+									"type": "default"
+								},
+								{
+									"key": "cantidad",
+									"value": "15",
+									"type": "default"
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "/C:/Users/Usuario/Desktop/facultad/burger.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"programacion3",
+								"2doCuatri",
+								"parcial",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HamburguesaConsultar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombre",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "tipo",
+									"value": "simple",
+									"type": "default"
+								},
+								{
+									"key": "request",
+									"value": "HamburguesaConsultar",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"programacion3",
+								"2doCuatri",
+								"parcial",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Venta",
+			"item": [
+				{
+					"name": "AltaVenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request",
+									"value": "AltaVenta",
+									"type": "default"
+								},
+								{
+									"key": "mail",
+									"value": "lautaro@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "nombre",
+									"value": "king",
+									"type": "default"
+								},
+								{
+									"key": "tipo",
+									"value": "doble",
+									"type": "default"
+								},
+								{
+									"key": "aderezo",
+									"value": "mayonesa",
+									"type": "default"
+								},
+								{
+									"key": "cantidad",
+									"value": "2",
+									"type": "default"
+								},
+								{
+									"key": "imagen",
+									"type": "file",
+									"src": "/C:/Users/Usuario/Desktop/facultad/usuarios.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"programacion3",
+								"2doCuatri",
+								"parcial",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModificarVenta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nroPedido",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "mail",
+									"value": "pedromiguel@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "Crispy",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "doble",
+									"type": "text"
+								},
+								{
+									"key": "aderezo",
+									"value": "ketchup",
+									"type": "text"
+								},
+								{
+									"key": "cantidad",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "request",
+									"value": "ModificarVenta",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"programacion3",
+								"2doCuatri",
+								"parcial",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConsultasVentas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "aderezo",
+									"value": "ketchup",
+									"type": "text"
+								},
+								{
+									"key": "usuario",
+									"value": "pedromiguel@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php?request=ConsultasVentas&aderezo=ketchup&usuario=pedromiguel@gmail.com&tipo=simple",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"programacion3",
+								"2doCuatri",
+								"parcial",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "request",
+									"value": "ConsultasVentas"
+								},
+								{
+									"key": "aderezo",
+									"value": "ketchup"
+								},
+								{
+									"key": "usuario",
+									"value": "pedromiguel@gmail.com"
+								},
+								{
+									"key": "tipo",
+									"value": "simple"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrarVenta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nroPedido",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"programacion3",
+								"2doCuatri",
+								"parcial",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cupones",
+			"item": [
+				{
+					"name": "AltaVentaCupon",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request",
+									"value": "AltaVenta",
+									"type": "default"
+								},
+								{
+									"key": "mail",
+									"value": "lautaro@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "nombre",
+									"value": "king",
+									"type": "default"
+								},
+								{
+									"key": "tipo",
+									"value": "doble",
+									"type": "default"
+								},
+								{
+									"key": "aderezo",
+									"value": "mayonesa",
+									"type": "default"
+								},
+								{
+									"key": "cantidad",
+									"value": "2",
+									"type": "default"
+								},
+								{
+									"key": "imagen",
+									"type": "file",
+									"src": "/C:/Users/Usuario/Desktop/facultad/usuarios.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"programacion3",
+								"2doCuatri",
+								"parcial",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DevolverHamburguesa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nroPedido",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "imgEnojado",
+									"type": "file",
+									"src": "/C:/xampp/htdocs/programacion3/2doCuatri/parcial/FOTOS-UTILIZADAS/cliente-enojado.png"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
