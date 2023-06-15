@@ -13,20 +13,39 @@ class Hamburguesa{
         $this->_id = $this->generarId();
         $this->_nombre = $nombre;
         $this->_precio = $precio;
-
-        if(strcasecmp($tipo,"simple")==0 || strcasecmp($tipo,"doble")==0)
-        {
-            $this->_tipo = $tipo;
-        }else $this->_tipo = "simple";
-
-        if(strcasecmp($aderezo,"mayonesa")==0 || strcasecmp($aderezo,"ketchup")==0 || strcasecmp($aderezo,"mostaza")==0)
-        {
-            $this->_aderezo = $aderezo;
-        }else $this->_tipo = "mayonesa";
-
+        $this->_tipo = Hamburguesa::ValidarTipo($tipo);
+        $this->_aderezo = Hamburguesa::ValidarAderezo($aderezo);
         $this->_cantidad = $cantidad;
     }
 
+    public static function ValidarAderezo($aderezo)
+    {   
+        $retorno = "mayonesa";
+        switch($aderezo)
+        {
+            case 'mayonesa':
+            case 'ketchup':
+            case 'mostaza':
+                $retorno = $aderezo;
+            break;
+        }
+
+        return $retorno;
+    }
+
+    public static function ValidarTipo($tipo)
+    {   
+        $retorno = "simple";
+        switch($tipo)
+        {
+            case 'simple':
+            case 'doble':
+                $retorno = $tipo;
+            break;
+        }
+
+        return $retorno;
+    }
     
     public static function LeerInfo(){
 
@@ -150,6 +169,7 @@ public static function HayStock($nombre,$tipo)
     $id = -1000;
     $stock = -1;
     $precio = -1;
+    $tipo = Hamburguesa::ValidarTipo($tipo);
 
     foreach($array as $b)
     {

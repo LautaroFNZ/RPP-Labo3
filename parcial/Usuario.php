@@ -25,17 +25,8 @@ class Usuario{
         $this->_nroPedido = $this->generarNroPedido();
         $this->_mail = $email;
         $this->_nombre = $nombre;
-
-        if(strcasecmp($tipo,"simple")==0 || strcasecmp($tipo,"doble")==0)
-        {
-            $this->_tipo = $tipo;
-        }else $this->_tipo = "simple";
-
-        if(strcasecmp($aderezo,"mayonesa")==0 || strcasecmp($aderezo,"ketchup")==0 || strcasecmp($aderezo,"mostaza")==0)
-        {
-            $this->_aderezo = $aderezo;
-        }else $this->_tipo = "mayonesa";
-
+        $this->_tipo = Hamburguesa::ValidarTipo($tipo);
+        $this->_aderezo = Hamburguesa::ValidarAderezo($aderezo);
         $this->_cantidad = intval($cantidad);
         $this->_fecha = date("d-m-y");
         $this->_status = true;
@@ -123,34 +114,33 @@ class Usuario{
         $key = json_decode(Hamburguesa::HayStock($user->_nombre,$user->_tipo));
 
         if($key->stock > 0)
-        {
-            
-            if(Hamburguesa::modificarStock($user->_cantidad,$key->id,"restar"))
-            {   
-                $precio = intval($key->precio) * $user->_cantidad;
-                if(($cupon = Usuario::ValidarCupon($idCupon)))
-                {
-                    $user->_precio = $precio - ($precio * $cupon);
-                   
-                    echo "Descuento aplicado con exito! El cupón dejará de estar activo<br>";
-                }else{
-                    $user->_precio = $precio;
-                }
-                
-                array_push($ventas,$user);
-                Usuario::GuardarInfo($ventas,VENTAS);
-                Usuario::GuardarImagen($user);
-                echo "Venta generada con exito!";
+        {   
+            if($user->_cantidad > 0 )
+            {
+                if(Hamburguesa::modificarStock($user->_cantidad,$key->id,"restar"))
+                {   
+                    $precio = intval($key->precio) * $user->_cantidad;
+                    if(($cupon = Usuario::ValidarCupon($idCupon)))
+                    {
+                        $user->_precio = $precio - ($precio * $cupon);
+                    
+                        echo "Descuento aplicado con exito! El cupón dejará de estar activo<br>";
+                    }else{
+                        $user->_precio = $precio;
+                    }
+                    
+                    array_push($ventas,$user);
+                    Usuario::GuardarInfo($ventas,VENTAS);
+                    Usuario::GuardarImagen($user);
+                    echo "Venta generada con exito!";
+
+                }else{ echo "No se pudo realizar la venta <br>";}
 
             }else{
-                echo "No se pudo realizar la venta <br>";
+                echo "No puedes comprar por una cantidad negativa";
             }
-            
 
-        }else{
-            echo "No tenemos stock!!";
-          
-        }
+        }else{ echo "No tenemos stock!!";}
        
 
     }
@@ -162,7 +152,9 @@ class Usuario{
         $pedidos = Usuario::leerVentas(VENTAS);
         $flag = false;
         $stock = json_decode(Hamburguesa::HayStock($nombre,$tipo));
-        
+        $aderezo = Hamburguesa::ValidarAderezo($aderezo);
+        $tipo = Hamburguesa::ValidarTipo($tipo);
+
         foreach($pedidos as $u)
         {
             
@@ -220,6 +212,7 @@ class Usuario{
     {
         $ventas = Usuario::leerVentas(VENTAS);
         $equals = array();
+        $aderezo = Hamburguesa::ValidarAderezo($aderezo);
 
         foreach($ventas as $v)
         {
@@ -275,7 +268,9 @@ class Usuario{
     public static function mostrarTipoIngresado($tipo)
     {
         $ventas = Usuario::leerVentas(VENTAS);
-        $equals = array();
+        $equals = array();  
+        $tipo = Hamburguesa::ValidarTipo($tipo);
+
 
         foreach($ventas as $v)
         {
