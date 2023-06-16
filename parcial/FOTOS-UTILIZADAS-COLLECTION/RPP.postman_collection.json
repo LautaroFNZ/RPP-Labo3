@@ -414,6 +414,33 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ConsultasCupon",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php?requester=ConsultasDevoluciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"programacion3",
+								"2doCuatri",
+								"parcial",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "requester",
+									"value": "ConsultasDevoluciones"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

@@ -107,6 +107,7 @@ class Hamburguesa{
                 $b->_precio = $burger->_precio;
                 $b->_cantidad += $burger->_cantidad;
                 $exist = true;
+                echo "Hamburguesa actualizada con exito!<br>";
                 break;             
             }
         }
@@ -160,7 +161,7 @@ class Hamburguesa{
     }
 
     
-public static function HayStock($nombre,$tipo)
+public static function HayStock($nombre,$tipo,$aderezo)
 {
     $array = Hamburguesa::LeerInfo();
     //var_dump($array);
@@ -178,7 +179,7 @@ public static function HayStock($nombre,$tipo)
             if($b->_cantidad > 0)
             {
                 $existenciaNombre = "Si hay {$nombre}";
-                $stock = $b->_cantidad;
+                //$stock = $b->_cantidad;
             }
             
 
@@ -187,9 +188,14 @@ public static function HayStock($nombre,$tipo)
                 if($b->_cantidad > 0)
                 {
                     $existenciaTipo = ", y hay {$tipo}";
-                    $stock = $b->_cantidad;
-                    $id = $b->_id;
-                    $precio = $b->_precio;
+                    if($aderezo == $b->_aderezo)
+                    {
+                        
+                        $stock = $b->_cantidad;
+                        $id = $b->_id;
+                        $precio = $b->_precio;
+                    }
+                    
                 }
                 break;
             }

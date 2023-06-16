@@ -9,7 +9,7 @@ c- Debe marcarse el cupón como ya usado
 require_once "Usuario.php";
 
 
-if(isset($_POST['mail']) && isset($_POST['nombre']) && isset($_POST['aderezo']) && isset($_POST['tipo']) && $_POST['cantidad'] && $_POST['idCupon'])
+if(isset($_POST['mail']) && isset($_POST['nombre']) && isset($_POST['aderezo']) && isset($_POST['tipo']) && isset($_POST['cantidad']) && isset($_POST['idCupon']))
 {
     $usuario = new Usuario($_POST['mail'],$_POST['nombre'],$_POST['aderezo'],$_POST['tipo'],$_POST['cantidad']);
 

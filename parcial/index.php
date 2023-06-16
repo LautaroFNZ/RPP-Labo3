@@ -14,6 +14,10 @@ switch($_SERVER['REQUEST_METHOD'])
             case "ConsultasVentas":
                 require_once "consultasVentas.php";
             break;
+                
+            case "ConsultasDevoluciones":
+                require_once "ConsultasDevoluciones.php";
+            break;
         }
          
     break;

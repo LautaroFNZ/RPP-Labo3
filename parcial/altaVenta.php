@@ -12,7 +12,7 @@ require_once "Hamburguesa.php";
 require_once "Usuario.php";
 
 
-if(isset($_POST['mail']) && isset($_POST['nombre']) && isset($_POST['aderezo']) && isset($_POST['tipo']) && $_POST['cantidad'])
+if(isset($_POST['mail']) && isset($_POST['nombre']) && isset($_POST['aderezo']) && isset($_POST['tipo']) && isset($_POST['cantidad']))
 {
     $usuario = new Usuario($_POST['mail'],$_POST['nombre'],$_POST['aderezo'],$_POST['tipo'],$_POST['cantidad']);
 

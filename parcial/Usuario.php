@@ -111,8 +111,8 @@ class Usuario{
     public static function generarVenta($user,$idCupon)
     {   
         $ventas = Usuario::leerVentas(VENTAS);
-        $key = json_decode(Hamburguesa::HayStock($user->_nombre,$user->_tipo));
-
+        $key = json_decode(Hamburguesa::HayStock($user->_nombre,$user->_tipo,$user->_aderezo));
+        
         if($key->stock > 0)
         {   
             if($user->_cantidad > 0 )
@@ -151,7 +151,7 @@ class Usuario{
     {
         $pedidos = Usuario::leerVentas(VENTAS);
         $flag = false;
-        $stock = json_decode(Hamburguesa::HayStock($nombre,$tipo));
+        $stock = json_decode(Hamburguesa::HayStock($nombre,$tipo,$aderezo));
         $aderezo = Hamburguesa::ValidarAderezo($aderezo);
         $tipo = Hamburguesa::ValidarTipo($tipo);
 
@@ -376,15 +376,15 @@ class Usuario{
         foreach($pedidos as $pedido)
         {
             if($pedido->_nroPedido == $nroPedido && $pedido->_status == true)
-            {   
-                $devolucion = new Devolucion($pedido,$razon,false);
+            {       
+                $devolucion = new Devolucion($pedido->_mail,$pedido->_nombre,$pedido->_aderezo,$pedido->_tipo,$pedido->_cantidad,$razon,false);
                 
                 echo "Devolución generada.<br>";
                 if(Usuario::imgExist())
                 {
                     array_push($cupones,array(
                         '_usuario' => $pedido->_mail,
-                        '_id' => Usuario::generarId(),
+                        '_id' => $pedido->_id,
                         '_fechaVencimiento' => $fecha = (new DateTime())->add(new DateInterval('P3D'))->format('d-m-y'),
                         '_descuento' => 0.10,
                         '_activo' => true
