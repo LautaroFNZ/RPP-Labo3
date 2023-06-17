@@ -63,7 +63,7 @@ class Devolucion extends Usuario{
             {
                 if($mostrar)
                 {
-                    echo "Mostrando devoluciones con cupón<br>";
+                    echo "-Mostrando devoluciones con cupón<br>";
                     foreach($toShow as $devolucion)
                     {
                         $mostrar = Devolucion::parseDevolucion($devolucion);
@@ -82,7 +82,6 @@ class Devolucion extends Usuario{
         }
 
 
-
     }
 
     public static function mostrarCupon($cupon)
@@ -96,19 +95,20 @@ class Devolucion extends Usuario{
 
         if(count($cupones)>0)
         {   
-            echo "Mostrando Cupones:<br>";
+            echo "-Mostrando Cupones:<br>";
             foreach($cupones as $cupon)
             {   
                 
                 echo Devolucion::mostrarCupon($cupon);
             }
-            echo "<br><br>";
+           
         }
     }
 
     public static function ListarDevolucionYCupon()
     {
         $DevolucionConCupon = Devolucion::DevolucionCuponTrue(false);
+        $flag = false;
 
         if(count($DevolucionConCupon)>0)
         {
@@ -119,16 +119,28 @@ class Devolucion extends Usuario{
                 foreach($cupones as $cupon)
                 {
                     if($devolucion->_id == $cupon->_id && $cupon->_activo)
-                    {
-                        echo "-Devolución:<br>";
+                    {   
+                        if(!$flag)
+                        {
+                            echo "-Mostrando devoluciones con cupones activos<br>";
+                            $flag = true;
+                        }
+                        echo "&nbsp&nbspDevolución:<br>";
                         $mostrar = Devolucion::parseDevolucion($devolucion);
                         echo $mostrar;
-                        echo "\tY su cupón:\t<br>" . Devolucion::mostrarCupon($cupon);
+                        echo "&nbsp&nbspY su cupón:<br>" . Devolucion::mostrarCupon($cupon);
+                        
                     }
                 }
             }
+
+            if(!$flag)
+            {
+                echo "-No pudimos encontrar devolucion que contengan un cupon activo<br>";
+            }
+
         }else{
-            echo "No hay devoluciones que contengan un cupón actualmente";
+            echo "-No hay devoluciones que contengan un cupón actualmente";
         }
 
     }

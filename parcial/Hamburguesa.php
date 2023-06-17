@@ -19,20 +19,20 @@ class Hamburguesa{
     }
 
     public static function ValidarAderezo($aderezo)
-    {   
-        $retorno = "mayonesa";
-        if(strcasecmp($aderezo,"mayonesa") && strcasecmp($aderezo,"ketchup") && strcasecmp($aderezo,"mostaza"))
-        {
-            $retorno = $aderezo;
-        }
-
-        return $retorno;
+{   
+    $retorno = "mayonesa";
+    if(strcasecmp($aderezo,"mayonesa") == 0 || strcasecmp($aderezo,"ketchup") == 0 || strcasecmp($aderezo,"mostaza") == 0)
+    {
+        $retorno = $aderezo;
     }
+
+    return $retorno;
+}
 
     public static function ValidarTipo($tipo)
     {   
         $retorno = "simple";
-        if(strcasecmp($tipo,"simple") && strcasecmp($tipo,"doble"))
+        if(strcasecmp($tipo, "simple") == 0 || strcasecmp($tipo, "doble") == 0)
         {
             $retorno = $tipo;
         }
