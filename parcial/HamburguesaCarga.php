@@ -12,9 +12,15 @@ require_once "Hamburguesa.php";
 
 if(isset($_POST['nombre']) && isset($_POST['precio']) && isset($_POST['tipo']) && isset($_POST['aderezo']) && isset($_POST['cantidad']))
 {
-    $burger = new Hamburguesa($_POST['nombre'],intval($_POST['precio']),$_POST['tipo'],$_POST['aderezo'],intval($_POST['cantidad']));
+    if(!empty($_POST['nombre']) && !empty($_POST['precio']) && !empty($_POST['tipo']) && !empty($_POST['aderezo']) && !empty($_POST['cantidad']))
+    {
+        $burger = new Hamburguesa($_POST['nombre'],intval($_POST['precio']),$_POST['tipo'],$_POST['aderezo'],intval($_POST['cantidad']));
 
-    Hamburguesa::GenerarBurger($burger);
+        Hamburguesa::GenerarBurger($burger);
+    }else{
+        echo "Verifique que ningun dato esta vacio<br>";
+    }
+  
 }
 
 

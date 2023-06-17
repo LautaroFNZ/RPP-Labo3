@@ -155,40 +155,46 @@ class Usuario{
         $aderezo = Hamburguesa::ValidarAderezo($aderezo);
         $tipo = Hamburguesa::ValidarTipo($tipo);
 
-        foreach($pedidos as $u)
+        if($cantidad > 0)
         {
-            
-            if($u->_nroPedido == $nroPedido)
+            foreach($pedidos as $u)
             {
                 
-                Hamburguesa::modificarStock($u->_cantidad,$stock->id,"sumar");
-
-                if(Hamburguesa::modificarStock($cantidad,$stock->id,"restar"))
-                {  
-                    $u->_mail = $mail;
-                    $u->_aderezo = $aderezo;
-                    $u->_tipo = $tipo;
-                    $u->_nombre = $nombre;
-                    $u->_cantidad = $cantidad;
-                    $flag = true;
-                    break;
-                }else{
-                    Hamburguesa::modificarStock($u->_cantidad,$stock->id,"restar");
+                if($u->_nroPedido == $nroPedido)
+                {
                     
-                }
-                
-               
-            }
-        }
+                    Hamburguesa::modificarStock($u->_cantidad,$stock->id,"sumar");
 
-        if($flag)
-        {   
-            echo "Pedido modificado!";
-            Usuario::GuardarInfo($pedidos,VENTAS);
-          
+                    if(Hamburguesa::modificarStock($cantidad,$stock->id,"restar"))
+                    {  
+                        $u->_mail = $mail;
+                        $u->_aderezo = $aderezo;
+                        $u->_tipo = $tipo;
+                        $u->_nombre = $nombre;
+                        $u->_cantidad = $cantidad;
+                        $flag = true;
+                        break;
+                    }else{
+                        Hamburguesa::modificarStock($u->_cantidad,$stock->id,"restar");
+                        
+                    }
+                    
+                
+                }
+            }
+
+            if($flag)
+            {   
+                echo "Pedido modificado!";
+                Usuario::GuardarInfo($pedidos,VENTAS);
+            
+            }else{
+                echo "No pudimos modificar tu pedido!";
+            }
         }else{
-            echo "No pudimos modificar tu pedido!";
+            echo "Ingrese una cantidad mayor a 0.<br>";
         }
+        
     }
 
     //CONSULTAS VENTAS
@@ -203,10 +209,12 @@ class Usuario{
         return $Usuario;
     }
 
+
     public function mostrarUsuario()
     {
-        return "<br>". $this->_id . "-" . $this->_mail . "-".$this->_nombre .  "-" . $this->_aderezo . "-" . $this->_tipo . "-" . $this->_cantidad . "-" . $this->_nroPedido . "-" . $this->_fecha . "<br>";
+        return "Id:{$this->_id}|Mail:{$this->_mail}|Nombre:{$this->_nombre}|Aderezo:{$this->_aderezo}|Tipo:{$this->_tipo}|Cantidad:{$this->_cantidad}|Nro Pedido:{$this->_nroPedido}|Fecha:{$this->_fecha}<br>";
     }
+
 
     public static function mostrarSaborIngresado($aderezo)
     {
@@ -294,6 +302,91 @@ class Usuario{
             echo "No hay ventas con del tipo '{$tipo}' <br>";
         }
     }
+
+    public static function buscarVentasFecha($fecha)
+    {
+        $ventas = Usuario::leerVentas(VENTAS);
+        $cantidad = 0;
+
+        if(count($ventas)>0)
+        {
+            foreach($ventas as $venta)
+            {
+                if(new DateTime($venta->_fecha) == new DateTime($fecha))
+                {
+                    $cantidad += $venta->_cantidad;
+                }
+            }
+
+        }
+
+        return "El dia {$fecha} se vendieron {$cantidad} hamburguesa(s)<br>";
+    }
+
+    public static function mostrarVentasAyer()
+    {   
+        $ventas = Usuario::leerVentas(VENTAS);
+        $cantidad = 0;
+           
+        if(count($ventas)>0)
+        {   
+            $ayer = date('d-m-y', strtotime('yesterday'));
+
+            foreach($ventas as $venta)
+            {
+                if(new DateTime($venta->_fecha) == new DateTime($ayer))
+                {
+                    $cantidad+=$venta->_cantidad;
+                }
+            }
+
+        }
+
+        return "Ayer se vendieron {$cantidad} hamburguesas(s)";
+    }
+
+    public static function ventasEnRango($fecha1,$fecha2)
+    {
+        $ventas = Usuario::leerVentas(VENTAS);
+        $toShow = array();   
+
+        if(count($ventas)>0)
+        {   
+            foreach($ventas as $venta)
+            {
+                if(new DateTime($venta->_fecha) >= new DateTime($fecha1) && new DateTime($venta->_fecha) <= new DateTime($fecha2))
+                {
+                    
+                    array_push($toShow,Usuario::convertirUsuario($venta));
+                }
+            }
+
+            if(count($toShow)>0)
+            {
+                echo "Mostrando las ventas del usuario entre el dia {$fecha1} y el dia {$fecha2}<br>";
+
+                usort($toShow,'Usuario::ordenarPorNombre');
+
+                foreach($toShow as $Usuario)
+                {
+                    
+                    echo $Usuario->mostrarUsuario();
+                    
+                }
+            }else{
+                echo "No hay ventas entre el dia {$fecha1} y el dia {$fecha2}<br>";
+            }
+        
+        }else echo "No hay ventas<br>";
+    
+        
+    }
+
+    public static function ordenarPorNombre($venta1,$venta2)
+    {
+        return strcasecmp($venta1->_nombre,$venta2->_nombre);
+    }
+
 
 
     //BORRAR VENTA

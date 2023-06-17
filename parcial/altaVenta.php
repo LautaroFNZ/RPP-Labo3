@@ -14,9 +14,16 @@ require_once "Usuario.php";
 
 if(isset($_POST['mail']) && isset($_POST['nombre']) && isset($_POST['aderezo']) && isset($_POST['tipo']) && isset($_POST['cantidad']))
 {
-    $usuario = new Usuario($_POST['mail'],$_POST['nombre'],$_POST['aderezo'],$_POST['tipo'],$_POST['cantidad']);
+    if(!empty($_POST['mail']) && !empty($_POST['nombre']) && !empty($_POST['aderezo']) && !empty($_POST['tipo']) && !empty($_POST['cantidad']))
+    {
+        $usuario = new Usuario($_POST['mail'],$_POST['nombre'],$_POST['aderezo'],$_POST['tipo'],$_POST['cantidad']);
 
-    Usuario::generarVenta($usuario,-1);
+        Usuario::generarVenta($usuario,-1);
+    }else{
+        echo "Verifique que ningun dato esta vacio<br>";
+    }
+
+    
     
 }
 

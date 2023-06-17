@@ -13,12 +13,40 @@ e- Listado de ventas de aderezo “Ketchup”
 require_once "Usuario.php";
 require_once "Hamburguesa.php";
 
+if(isset($_GET['tipo']) && isset($_GET['usuario']) && isset($_GET['fechaIngresada']) && isset($_GET['fecha1']) && isset($_GET['fecha2']))
+{
+    if(!empty($_GET['tipo']) && !empty($_GET['usuario']))
+    {
+        Usuario::mostrarVentasUsuario($_GET['usuario']);
+        
+        Usuario::mostrarTipoIngresado($_GET['tipo']);
+        
+        Usuario::mostrarSaborIngresado("ketchup");
 
-Usuario::mostrarSaborIngresado($_GET['aderezo']);
+    }else{
+        echo "Verifique que ningun dato esta vacio<br>";
+    }
+    
 
-Usuario::mostrarVentasUsuario($_GET['usuario']);
+    if(!empty($_GET['fechaIngresada']))
+    {
+        echo Usuario::buscarVentasFecha($_GET['fechaIngresada']);
+    }else{
+        echo Usuario::mostrarVentasAyer();
+    }
 
-Usuario::mostrarTipoIngresado($_GET['tipo']);
+    if(!empty($_GET['fecha1']) && !empty($_GET['fecha2']))
+    {
+        Usuario::ventasEnRango($_GET['fecha1'],$_GET['fecha2']);
+    }else{
+        echo "Ingrese las fechas correspondientes";
+    }
+
+}
+
+
+
+
 
 
 

@@ -9,14 +9,20 @@ require_once "Hamburguesa.php";
 
 function ConsultarStock($tipo,$nombre)
 {
-    $informacion = json_decode(Hamburguesa::HayStock($nombre,$tipo));
+    $informacion = json_decode(Hamburguesa::HayStock($nombre,$tipo,"generico"));
 
     echo $informacion->nombre . $informacion->tipo;
 }
 
 if(isset($_POST['nombre']) && isset($_POST['tipo']))
 {
-    ConsultarStock($_POST['tipo'],$_POST['nombre']);
+    if(!empty($_POST['nombre']) && !empty($_POST['tipo']))
+    {
+        ConsultarStock($_POST['tipo'],$_POST['nombre']);
+    }else{
+        echo "Verifique que ningun dato esta vacio<br>";
+    }
+    
 }
     
 

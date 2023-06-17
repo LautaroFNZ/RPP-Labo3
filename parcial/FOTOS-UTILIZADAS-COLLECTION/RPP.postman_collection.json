@@ -24,38 +24,38 @@
 								},
 								{
 									"key": "nombre",
-									"value": "lomito con queso 5",
+									"value": "Grand Tasty",
 									"type": "default"
 								},
 								{
 									"key": "precio",
-									"value": "1900",
+									"value": "3000",
 									"type": "default"
 								},
 								{
 									"key": "tipo",
-									"value": "simple",
+									"value": "doble",
 									"type": "default"
 								},
 								{
 									"key": "aderezo",
-									"value": "mayonesa",
+									"value": "ketchup",
 									"type": "default"
 								},
 								{
 									"key": "cantidad",
-									"value": "15",
+									"value": "100",
 									"type": "default"
 								},
 								{
 									"key": "img",
 									"type": "file",
-									"src": "/C:/Users/Usuario/Desktop/facultad/burger.jpg"
+									"src": []
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"raw": "http://localhost/programacion3/2doCuatri/RPP-Labo3/parcial/index.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -63,6 +63,7 @@
 							"path": [
 								"programacion3",
 								"2doCuatri",
+								"RPP-Labo3",
 								"parcial",
 								"index.php"
 							]
@@ -79,24 +80,24 @@
 							"mode": "formdata",
 							"formdata": [
 								{
+									"key": "request",
+									"value": "HamburguesaConsultar",
+									"type": "default"
+								},
+								{
 									"key": "nombre",
-									"value": "",
+									"value": "Grand Tasty",
 									"type": "default"
 								},
 								{
 									"key": "tipo",
-									"value": "simple",
-									"type": "default"
-								},
-								{
-									"key": "request",
-									"value": "HamburguesaConsultar",
+									"value": "doble",
 									"type": "default"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"raw": "http://localhost/programacion3/2doCuatri/RPP-Labo3/parcial/index.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -104,6 +105,7 @@
 							"path": [
 								"programacion3",
 								"2doCuatri",
+								"RPP-Labo3",
 								"parcial",
 								"index.php"
 							]
@@ -131,12 +133,12 @@
 								},
 								{
 									"key": "mail",
-									"value": "lautaro@gmail.com",
+									"value": "usuario@gmail.com",
 									"type": "default"
 								},
 								{
 									"key": "nombre",
-									"value": "king",
+									"value": "Grand Tasty",
 									"type": "default"
 								},
 								{
@@ -146,23 +148,23 @@
 								},
 								{
 									"key": "aderezo",
-									"value": "mayonesa",
+									"value": "ketchup",
 									"type": "default"
 								},
 								{
 									"key": "cantidad",
-									"value": "2",
+									"value": "5",
 									"type": "default"
 								},
 								{
 									"key": "imagen",
 									"type": "file",
-									"src": "/C:/Users/Usuario/Desktop/facultad/usuarios.png"
+									"src": "/C:/xampp/htdocs/programacion3/2doCuatri/parcial/FOTOS-UTILIZADAS-COLLECTION/usuario.png"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"raw": "http://localhost/programacion3/2doCuatri/RPP-Labo3/parcial/index.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -170,6 +172,7 @@
 							"path": [
 								"programacion3",
 								"2doCuatri",
+								"RPP-Labo3",
 								"parcial",
 								"index.php"
 							]
@@ -186,18 +189,23 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
+									"key": "request",
+									"value": "ModificarVenta",
+									"type": "text"
+								},
+								{
 									"key": "nroPedido",
 									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "mail",
-									"value": "pedromiguel@gmail.com",
+									"value": "usuario@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "nombre",
-									"value": "Crispy",
+									"value": "Grand Tasty",
 									"type": "text"
 								},
 								{
@@ -207,23 +215,18 @@
 								},
 								{
 									"key": "aderezo",
-									"value": "ketchup",
+									"value": "mayonesa",
 									"type": "text"
 								},
 								{
 									"key": "cantidad",
-									"value": "20",
-									"type": "text"
-								},
-								{
-									"key": "request",
-									"value": "ModificarVenta",
+									"value": "3",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"raw": "http://localhost/programacion3/2doCuatri/RPP-Labo3/parcial/index.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -231,6 +234,7 @@
 							"path": [
 								"programacion3",
 								"2doCuatri",
+								"RPP-Labo3",
 								"parcial",
 								"index.php"
 							]
@@ -252,17 +256,19 @@
 								{
 									"key": "aderezo",
 									"value": "ketchup",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "usuario",
 									"value": "pedromiguel@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php?request=ConsultasVentas&aderezo=ketchup&usuario=pedromiguel@gmail.com&tipo=simple",
+							"raw": "http://localhost/programacion3/2doCuatri/RPP-Labo3/parcial/index.php?request=ConsultasVentas&tipo=doble&usuario=usuario@gmail.com&fechaIngresada=10-06-23&fecha1=19-06-23&fecha2=20-06-23",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -270,6 +276,7 @@
 							"path": [
 								"programacion3",
 								"2doCuatri",
+								"RPP-Labo3",
 								"parcial",
 								"index.php"
 							],
@@ -279,16 +286,24 @@
 									"value": "ConsultasVentas"
 								},
 								{
-									"key": "aderezo",
-									"value": "ketchup"
+									"key": "tipo",
+									"value": "doble"
 								},
 								{
 									"key": "usuario",
-									"value": "pedromiguel@gmail.com"
+									"value": "usuario@gmail.com"
 								},
 								{
-									"key": "tipo",
-									"value": "simple"
+									"key": "fechaIngresada",
+									"value": "10-06-23"
+								},
+								{
+									"key": "fecha1",
+									"value": "19-06-23"
+								},
+								{
+									"key": "fecha2",
+									"value": "20-06-23"
 								}
 							]
 						}
@@ -311,7 +326,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"raw": "http://localhost/programacion3/2doCuatri/RPP-Labo3/parcial/index.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -319,6 +334,7 @@
 							"path": [
 								"programacion3",
 								"2doCuatri",
+								"RPP-Labo3",
 								"parcial",
 								"index.php"
 							]
@@ -341,17 +357,17 @@
 							"formdata": [
 								{
 									"key": "request",
-									"value": "AltaVenta",
+									"value": "AltaVentaCupon",
 									"type": "default"
 								},
 								{
 									"key": "mail",
-									"value": "lautaro@gmail.com",
+									"value": "marcos@gmail.com",
 									"type": "default"
 								},
 								{
 									"key": "nombre",
-									"value": "king",
+									"value": "Grand Tasty",
 									"type": "default"
 								},
 								{
@@ -366,18 +382,23 @@
 								},
 								{
 									"key": "cantidad",
-									"value": "2",
+									"value": "1",
 									"type": "default"
 								},
 								{
 									"key": "imagen",
 									"type": "file",
-									"src": "/C:/Users/Usuario/Desktop/facultad/usuarios.png"
+									"src": []
+								},
+								{
+									"key": "idCupon",
+									"value": "",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php",
+							"raw": "http://localhost/programacion3/2doCuatri/RPP-Labo3/parcial/index.php",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -385,6 +406,7 @@
 							"path": [
 								"programacion3",
 								"2doCuatri",
+								"RPP-Labo3",
 								"parcial",
 								"index.php"
 							]
@@ -401,15 +423,39 @@
 							"mode": "formdata",
 							"formdata": [
 								{
+									"key": "request",
+									"value": "DevolverHamburguesa",
+									"type": "text"
+								},
+								{
 									"key": "nroPedido",
-									"value": "5",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "imgEnojado",
 									"type": "file",
-									"src": "/C:/xampp/htdocs/programacion3/2doCuatri/parcial/FOTOS-UTILIZADAS/cliente-enojado.png"
+									"src": []
+								},
+								{
+									"key": "razon",
+									"value": "estaba fria",
+									"type": "text"
 								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/programacion3/2doCuatri/RPP-Labo3/parcial/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"programacion3",
+								"2doCuatri",
+								"RPP-Labo3",
+								"parcial",
+								"index.php"
 							]
 						}
 					},
@@ -421,7 +467,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/programacion3/2doCuatri/parcial/index.php?requester=ConsultasDevoluciones",
+							"raw": "http://localhost/programacion3/2doCuatri/RPP-Labo3/parcial/index.php?request=ConsultasDevoluciones",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -429,12 +475,13 @@
 							"path": [
 								"programacion3",
 								"2doCuatri",
+								"RPP-Labo3",
 								"parcial",
 								"index.php"
 							],
 							"query": [
 								{
-									"key": "requester",
+									"key": "request",
 									"value": "ConsultasDevoluciones"
 								}
 							]

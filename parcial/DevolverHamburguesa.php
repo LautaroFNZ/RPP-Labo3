@@ -10,8 +10,16 @@ compra con un vencimiento de 3 días.
 
 require_once "Usuario.php";
 
+if(isset($_POST['nroPedido']) && isset($_POST['razon']))
+{
+    if(!empty($_POST['nroPedido']) && !empty($_POST['razon']))
+    {
+        Usuario::DevolverHamburguesa($_POST['nroPedido'],$_POST['razon']);
 
-Usuario::DevolverHamburguesa($_POST['nroPedido'],$_POST['razon']);
+    }else{
+        echo "Verifique que ningun dato esta vacio<br>";
+    }
+}
 
 
 ?>

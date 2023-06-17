@@ -9,8 +9,17 @@ require_once "Usuario.php";
 parse_str(file_get_contents("php://input"), $params);
 
 if(isset($params['nroPedido']))
+{
+    if(!empty($params['nroPedido']))
+    {
+        Usuario::borrarVenta($params['nroPedido']);
 
-Usuario::borrarVenta($params['nroPedido']);
+    }else{
+        echo "Verifique que ningun dato esta vacio<br>";
+    }
+}
+
+
 
 
 

@@ -9,29 +9,16 @@ require_once "Usuario.php";
 
 parse_str(file_get_contents("php://input"), $params);
 
-if (
-    isset($params['nroPedido']) &&
-    isset($params['mail']) &&
-    isset($params['aderezo']) &&
-    isset($params['tipo']) &&
-    isset($params['nombre']) &&
-    isset($params['cantidad'])
-) {
-    $nroPedido = $params['nroPedido'];
-    $mail = $params['mail'];
-    $aderezo = $params['aderezo'];
-    $tipo = $params['tipo'];
-    $nombre = $params['nombre'];
-    $cantidad = $params['cantidad'];
+if (isset($params['nroPedido']) && isset($params['mail']) && isset($params['aderezo']) && isset($params['tipo']) && isset($params['nombre']) &&isset($params['cantidad'])) 
+{
+    if(!empty($params['nroPedido']) && !empty($params['mail']) && !empty($params['aderezo']) && !empty($params['tipo']) && !empty($params['nombre']) && !empty($params['cantidad']))
+    {
+        Usuario::modificarVenta($params['nombre'], $params['nroPedido'], $params['mail'], $params['aderezo'], $params['tipo'], intval($params['cantidad']));
 
-    // Validar los datos según sea necesario
-    // ...
-
-    // Llamar a la función Usuario::modificarVenta()
-    Usuario::modificarVenta($nombre, intval($nroPedido), $mail, $aderezo, $tipo, intval($cantidad));
-
-    
-    
+    }
+    else{
+        echo "Verifique que ningun dato esta vacio<br>";
+    }
 }
 
 

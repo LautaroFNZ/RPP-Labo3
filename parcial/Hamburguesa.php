@@ -21,13 +21,9 @@ class Hamburguesa{
     public static function ValidarAderezo($aderezo)
     {   
         $retorno = "mayonesa";
-        switch($aderezo)
+        if(strcasecmp($aderezo,"mayonesa") && strcasecmp($aderezo,"ketchup") && strcasecmp($aderezo,"mostaza"))
         {
-            case 'mayonesa':
-            case 'ketchup':
-            case 'mostaza':
-                $retorno = $aderezo;
-            break;
+            $retorno = $aderezo;
         }
 
         return $retorno;
@@ -36,12 +32,9 @@ class Hamburguesa{
     public static function ValidarTipo($tipo)
     {   
         $retorno = "simple";
-        switch($tipo)
+        if(strcasecmp($tipo,"simple") && strcasecmp($tipo,"doble"))
         {
-            case 'simple':
-            case 'doble':
-                $retorno = $tipo;
-            break;
+            $retorno = $tipo;
         }
 
         return $retorno;
@@ -100,25 +93,39 @@ class Hamburguesa{
         $array = Hamburguesa::LeerInfo();
         $exist = false;
 
-        foreach($array as $b)
+        if($burger->_cantidad > 0)
         {
-            if($burger->_nombre == $b->_nombre && $burger->_tipo == $b->_tipo)
+            if($burger->_precio > 0)
             {
-                $b->_precio = $burger->_precio;
-                $b->_cantidad += $burger->_cantidad;
-                $exist = true;
-                echo "Hamburguesa actualizada con exito!<br>";
-                break;             
-            }
+                foreach($array as $b)
+                {
+                    if($burger->_nombre == $b->_nombre && $burger->_tipo == $b->_tipo)
+                    {
+                        $b->_precio = $burger->_precio;
+                        $b->_cantidad += $burger->_cantidad;
+                        $exist = true;
+                        echo "Hamburguesa actualizada con exito!<br>";
+                        break;             
+                    }
+                }
+
+                if(!$exist){
+                    array_push($array,$burger);
+                    Hamburguesa::GuardarImagen($burger);
+                    echo "Carga de Hamburguesa satisfactoria!";
+                }
+
+                Hamburguesa::GuardarBurger($array);
+
+            }else echo "Ingrese un precio mayor a 0.<br>";
+
+
+            
+        }else{
+            echo "Ingrese una cantidad mayor a 0.<br>";
         }
 
-        if(!$exist){
-            array_push($array,$burger);
-            Hamburguesa::GuardarImagen($burger);
-            echo "Carga de Hamburguesa satisfactoria!";
-        }
-
-        Hamburguesa::GuardarBurger($array);
+        
         
     }
 
@@ -171,6 +178,7 @@ public static function HayStock($nombre,$tipo,$aderezo)
     $stock = -1;
     $precio = -1;
     $tipo = Hamburguesa::ValidarTipo($tipo);
+    $aderezo = Hamburguesa::ValidarAderezo($aderezo);
 
     foreach($array as $b)
     {
